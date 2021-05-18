@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import Search from './search.jsx';
+import Gallery from './gallery.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,15 +9,17 @@ class App extends React.Component {
     this.state = {
     };
   }
-
     render() {
       return (
         <div>
-            <div>
-              <Search />
-            </div>
+          <div>
+            <Search />
+          </div>
+          <br />
+          <div>
+            <Gallery />
+          </div>
 
-          <div>Hello World!!</div>
         </div>
       );
     }

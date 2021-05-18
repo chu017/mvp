@@ -1,15 +1,21 @@
 import React from 'react';
+import Card from './card.jsx';
 
-const Search = props => {
+const Gallery = props => {
   return (
-    <div className="search-bar">
-    <input type="text" />
-
-    <button className="search-button">
-      <span>search</span>
-    </button>
-  </div>
+    <div className="cards">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
   )
 }
 
-export default Search;
+export default Gallery;
