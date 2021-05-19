@@ -1,20 +1,26 @@
 import React from 'react';
-import Card from './card.jsx';
+import Card from './Card.jsx';
 
 const Gallery = props => {
   return (
-    <div className="cards">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+    <div>
+      <h3>Popular recipes</h3>
+      <div className="cards">
+       <Card handleClick={props.handleClick} />
+       <Card />
+       <Card />
+       <Card />
+       <Card />
+       <Card />
+       <Card />
+       <Card />
+       <Card />
+       <Card />
+       <Card />
+        <Card />
+      </div>
     </div>
+
   )
 }
 
