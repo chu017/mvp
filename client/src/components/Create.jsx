@@ -4,21 +4,19 @@ class Create extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      author: '',
-      title: '',
-      url: '',
-      body: ''
+      recipe: '',
+      ingredients: '',
+      description: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
-
+    this.createPost = this.createPost.bind(this);
   }
 
   handleChange(e) {
-    var post = e.target;
-    console.log(post);
+    const name = e.target.name;
+    const value = e.target.value;
 
-    var {name, value} = e.targe;
     this.setState({
       [name]: value
     });
@@ -26,8 +24,10 @@ class Create extends React.Component {
 
   createPost(e) {
     e.preventDefault();
-    console.log(e.target);
-    this.props.post(post);
+    const { recipe, ingredients, description } = this.state;
+
+    console.log(recipe, ingredients, description);
+    // this.props.post(post);
   }
 
   render() {
@@ -35,34 +35,48 @@ class Create extends React.Component {
       <div className="create">
 
         <div className="create-editor">
-          <h2>AUTHOR</h2>
+          <h2>Add a Recipe</h2>
 
-          <form>
-            <input className="create-input" type="text"
-              name="title"
-              vaule={this.state.title}
+          <form onSubmit={this.createPost}>
+            <h4>Step 1: Add a title</h4>
+            <input className="create-input"
+              name="recipe"
+              type="text"
+              vaule={this.state.recipe}
               onChange={this.handleChange}
-              placeholder="Post Title"></input>
+              placeholder="Recipe Title"></input>
+            <h4>Step 2: Upload the final image</h4>
+            <input type="file" />
 
-            <input className="create-input" type="text"
-              placeholder="Author"></input>
+            <h4>Step 3: Add ingredients</h4>
+            <input className="create-input"
+              name="ingredients"
+              type="text"
+              vaule={this.state.ingredients}
+              onChange={this.handleChange}
+              placeholder="Ingredients"></input>
 
-            <input className="create-input" type="text"
-              placeholder="Image URL"></input>
+            <h4>Step 4: Descript method step by step</h4>
 
+            <h5>Upload a image</h5>
+            <input type="file" />
+
+            <h5>Add description</h5>
             <textarea className="create-body-textarea"
-              placeholder="Post Body"></textarea>
+              name="description"
+              vaule={this.state.description}
+              onChange={this.handleChange}
+              placeholder="Method description"></textarea>
 
             <button className="create-submit-button" type="submit">
-              Save post
+              Save recipe
             </button>
-
           </form>
 
         </div>
 
         <div className="create-preview">
-          <h2>PREVIEW</h2>
+          <h2>Preview</h2>
           {/* <!-- you'll use your framework of choice to implement live preview here --> */}
         </div>
 

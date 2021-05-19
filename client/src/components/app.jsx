@@ -3,7 +3,7 @@ import $ from 'jquery';
 import Search from './Search.jsx';
 import Gallery from './Gallery.jsx';
 import Create from './Create.jsx';
-import Admin from './Admin.jsx';
+import Account from './Account.jsx';
 import Post from './Post.jsx';
 
 class App extends React.Component {
@@ -55,9 +55,12 @@ class App extends React.Component {
       recipe={this.state.recipe}
       getOne={this.getOne}/>;
 
-    } else if (view === 'admin') {
+    } else if (view === 'account') {
 
-      return <Admin recipes={this.state.recipes}/>;
+      return <Account handleClick={() => {
+        this.changeView('recipeview');
+      }}
+      recipes={this.state.recipes}/>;
 
     } else if (view === 'create') {
 
@@ -93,7 +96,7 @@ class App extends React.Component {
             ? 'nav-selected'
             : 'nav-unselected'}
           onClick={() => {
-            this.getAll();
+            // this.getAll();
             this.changeView('gallery');
           }}>
             See all Recipes
@@ -106,11 +109,13 @@ class App extends React.Component {
             Add a Recipe
           </span>
 
-          <span className={this.state.view === 'admin'
+          <span className={this.state.view === 'account'
             ? 'nav-selected'
             : 'nav-unselected'}
-          onClick={() => this.changeView('admin')}>
-            User
+          onClick={() => this.changeView('account')}>
+            <div className="card-profile">
+               <img src="https://www.the-happy-chef.com/assets/img/team/team-3.jpg" className="profile-nav"/>
+            </div>
           </span>
 
         </div>
