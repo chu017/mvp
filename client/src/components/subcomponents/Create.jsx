@@ -118,7 +118,8 @@ class Create extends React.Component {
                 <option value="Pork">Pork</option>
                 <option value="Fish">Fish</option>
                 <option value="Lamb">Lamb</option>
-                <option value="Lamb">Tofu</option>
+                <option value="Egg">Egg</option>
+                <option value="Tofu">Tofu</option>
             </select>
             </label>
 

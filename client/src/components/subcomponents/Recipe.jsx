@@ -22,7 +22,10 @@ class Recipe extends React.Component {
           <p>Likes: 120</p>
           <br></br>
           <div className="card-profile">
-          <img src="https://www.the-happy-chef.com/assets/img/team/team-3.jpg" className="profile-card"/>
+          <img src="https://www.the-happy-chef.com/assets/img/team/team-3.jpg"
+          className="profile-card"
+          onClick={(e) => {this.props.handleClick();}}
+          />
           <p>Jack Ross</p>
           </div>
           <br></br>
@@ -69,7 +72,7 @@ class Recipe extends React.Component {
             <p>5g fresh parsley leaves, finely chopped pinch of cayenne or chilli powder</p>
           <br></br>
           <Review />
-          <UploadFile />
+          {/* <UploadFile /> */}
         </div>
 
       </div>

@@ -81,7 +81,6 @@ body {
 .nav {
   background-color: greenyellow;
   margin: 0px;
-  height: 550px;
   padding: 10px;
   display: flex;
   justify-content: flex-end;

@@ -1,42 +1,51 @@
 import React from 'react';
-import { useState } from 'react';
 
-const Search = props => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const { recipes } = props;
-  let searchedItems = [];
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchedTerm: ''
 
-  return (
-    <div className="search-bar">
-      <input type="text"
-      placeholder="search..."
-      onChange={(event) => {
-        setSearchTerm(event.target.value);
-      }}
-      />
+    };
 
-        {recipes.filter((val) => {
-          if (searchTerm === '') {
-            return val
-          } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-            searchedItems.push(val);
-            return val
-          }
-        }).map((item, i) => {
-          return (
-            <div className="search-item" key={i}>
-              <p>{item.name}</p>
-            </div>
-          )
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
-        })}
+  }
 
-     {/* <button className="search-button">
-       <span>search</span>
-     </button> */}
+  handleChange(event) {
+    this.setState({searchedTerm: event.target.value});
+  }
 
-  </div>
-  )
+  handleSubmit(event) {
+    event.preventDefault();
+    // alert('A name was submitted: ' + this.state.searchMovie);
+    const term = this.state.searchedTerm;
+    console.log(term);
+    this.props.searchRecipes(term);
+
+  }
+
+  render() {
+
+
+    return (
+      <div>
+
+        <form onSubmit={this.handleSubmit}>
+
+          <input
+          type="text"
+          value={this.state.searchedTerm}
+          onChange={this.handleChange}
+          placeholder="Search.." />
+          <input type="submit" value="Go!" />
+
+        </form>
+
+      </div>
+    );
+  }
 }
 
 export default Search;

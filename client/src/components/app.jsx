@@ -10,16 +10,35 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: false,
       view: 'gallery',
       recipes: [],
-      recipe:[]
+      recipe:[],
+      searchedRecipes: [],
+      searchTerm: ''
     };
     this.postRecipe = this.postRecipe.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.searchRecipes = this.searchRecipes.bind(this);
   }
 
   componentDidMount() {
     this.getRecipes();
+  }
+
+  getRecipes() {
+    $.ajax({
+      url: '/recipes',
+      type: 'GET',
+    })
+      .then ((recipes) => {
+        this.setState({searchedRecipes: recipes})
+        this.setState({recipes})
+      })
+      .then (() => {
+        this.setState({ show: true })
+      })
   }
 
   postRecipe(recipe) {
@@ -35,18 +54,35 @@ class App extends React.Component {
       })
   }
 
-  getRecipes() {
-    $.ajax({
-      url: '/recipes',
-      type: 'GET',
-      success: (recipes) => this.setState({recipes}),
-      error: (e) => console.log(e)
-    });
-  }
-
   changeView(option) {
     this.setState({
       view: option
+    });
+  }
+
+  searchRecipes(term) {
+    // console.log(term)
+    var recipes = this.state.recipes;
+    var newSearched = [];
+    for (var i = 0; i < recipes.length; i++) {
+      if (term === '') {
+        this.setState({searchedRecipes: this.state.recipes})
+      }
+      if (recipes[i].name.toLowerCase().includes(term.toLowerCase())) {
+        newSearched.push(recipes[i]);
+        // var addRecipe = recipes[i];
+      }
+
+      this.setState({ searchedRecipes: newSearched });
+    }
+  }
+
+  handleChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState({
+      [name]: value
     });
   }
 
@@ -58,6 +94,7 @@ class App extends React.Component {
         this.changeView('recipeview');
       }}
       recipes={this.state.recipes}
+      searchedRecipes={this.state.searchedRecipes}
       recipe={this.state.recipe}
       getOne={this.getOne}/>;
 
@@ -66,46 +103,64 @@ class App extends React.Component {
       return <Account handleClick={() => {
         this.changeView('recipeview');
       }}
-      recipes={this.state.recipes}/>;
+      recipes={this.state.recipes}
+      searchedRecipes={this.state.searchedRecipes}
+      />;
 
     } else if (view === 'create') {
 
-      return <Create recipes={this.state.recipes}
+      return <Create
+      recipes={this.state.recipes}
       recipe={this.recipe}
       postRecipe={this.postRecipe}
       />;
 
     } else {
-      return <Recipe
+      return <Recipe handleClick={() => {
+        this.changeView('account');
+      }}
         recipes={this.state.recipes}
+        searchedRecipes={this.state.searchedRecipes}
         recipe={this.state.recipe}
       />;
     }
   }
 
   render() {
+    if (this.state.show === false) {
+      return (
+        <div className="loading">
+          Loading ...
+        </div>
+      );
+    }
+
+    const { recipes, searchTerm, searchedItems } = this.state;
+
     return (
       <div>
         <div className="nav">
           <span className="logo"
             onClick={() => {
-              // this.getAll();
+              this.getRecipes();
               this.changeView('gallery');
             }}>
             Foodys
           </span>
 
+
           <div className="search">
-           <Search
-           recipes={this.state.recipes}
-           />
+            <Search
+            searchRecipes={this.searchRecipes}
+            />
           </div>
+
 
           <span className={this.state.view === 'gallery'
             ? 'nav-selected'
             : 'nav-unselected'}
           onClick={() => {
-            // this.getAll();
+            this.getRecipes();
             this.changeView('gallery');
           }}>
             See all Recipes
