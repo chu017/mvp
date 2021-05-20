@@ -2,9 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import Review from './Review.jsx';
 import UploadFile from './UploadFile.jsx';
-// import UploadImage from './UploadImage.jsx';
 
-class Post extends React.Component {
+class Recipe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,13 +13,13 @@ class Post extends React.Component {
   // <img src="https://loremflickr.com/320/240" />
 
   render() {
+    const { recipe } = this.props;
     return (
       <div className="post">
-
         <div className="post-one">
           <img src="https://realfood.tesco.com/media/images/Souffle-omelette-b7cf7c9a-8ac1-4b94-a2bc-e7b3436f323c-0-636x418.jpg"/>
           <h2><b>Soufflé Omelette</b></h2>
-          <p>Likes: 99</p>
+          <p>Likes: 120</p>
           <br></br>
           <div className="card-profile">
           <img src="https://www.the-happy-chef.com/assets/img/team/team-3.jpg" className="profile-card"/>
@@ -36,11 +35,11 @@ class Post extends React.Component {
           <br></br>
           <h4><b>Step 2: Make the sauce</b></h4>
           <img src="https://realfood.tesco.com/media/images/Step-2-fdd51284-faa6-4e34-a321-a032ee5f990e-0-636x418.jpg"/>
-          <p>Ipsum nunc aliquet bibendum enim. Diam vel quam elementum pulvinar etiam non quam. Eget nullam non nisi est. Sit amet luctus venenatis lectus magna fringilla urna.</p>
+          <p>Meanwhile, make the cheese sauce. Mix the crème fraîche, mustard, 1 egg yolk (reserve the egg white) and cheese in a small saucepan. This cheat’s cheese sauce doesn’t need to bubble away for ages. Simply mix the ingredients in the pan and gently heat while you make the omelette, then  season well and place over a medium-low heat for 5 mins, stirring occasionally, until smooth and combined. Cover and set aside.</p>
           <br></br>
           <h4><b>Step 3: Separate the eggs</b></h4>
           <img src="https://realfood.tesco.com/media/images/Step-3-050e429a-881a-4ed6-aa4f-e9136d8d5aa8-0-636x418.jpg"/>
-          <p>Ipsum nunc aliquet bibendum enim. Diam vel quam elementum pulvinar etiam non quam. Eget nullam non nisi est. Sit amet luctus venenatis lectus magna fringilla urna.</p>
+          <p>Separate the remaining eggs and place the whites (including the reserved white) in a medium bowl. To do this, crack the shell in the middle so you have two similar-sized pieces. Tip the yolk back and forth between the two pieces, letting the white slip into a bowl below. Don’t let any yolk get into the whites: the fat will stop the egg whites from foaming.</p>
           <br></br>
           <h4><b>Step 4: Beat the whites</b></h4>
           <img src="https://realfood.tesco.com/media/images/Step-4-3f5c1e4f-d6cb-4139-9bf5-45e225dc93c5-0-636x418.jpg"/>
@@ -71,7 +70,6 @@ class Post extends React.Component {
           <br></br>
           <Review />
           <UploadFile />
-          {/* <UploadImage /> */}
         </div>
 
       </div>
@@ -79,4 +77,4 @@ class Post extends React.Component {
   }
 }
 
-export default Post;
+export default Recipe;

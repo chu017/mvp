@@ -10,19 +10,21 @@ const recipeSchema = mongoose.Schema({
   special: String, // health food, creative
   userId: Number,
 	imageURL: String,
-	Ingredients: {
-    ingredient1: String, ingredient2: String, ingredient3: String
+  user: String,
+  userURL: String,
+	ingredients: {
+    1: String, 2: String, 3: String
   },
-	method: {
-    step1:{
+	methods: {
+    1:{
       imageURL: String,
       description: String,
     },
-    step2:{
+    2:{
       imageURL: String,
       description: String,
     },
-    step3:{
+    3:{
       imageURL: String,
       description: String,
     },

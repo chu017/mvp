@@ -1,10 +1,10 @@
 import React from 'react';
 import $ from 'jquery';
-import Search from './subcomponents/Search.jsx';
-import Gallery from './subcomponents/Gallery.jsx';
-import Create from './subcomponents/Create.jsx';
-import Account from './subcomponents/Account.jsx';
-import Recipe from './subcomponents/Recipe.jsx';
+import Search from './Search.jsx';
+import Gallery from './Gallery.jsx';
+import Create from './Create.jsx';
+import Account from './Account.jsx';
+import Post from './Post.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +19,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getRecipes();
+
+  }
+
+  getRecipes() {
+    $.ajax({
+      url: 'http://localhost:3000/api/recipes',
+      type: 'GET',
+      success: (recipes) => this.setState({recipes}),
+      error: (e) => console.log(e)
+    });
   }
 
   postRecipe(recipe) {
@@ -33,15 +42,6 @@ class App extends React.Component {
       .done(function() {
         console.log('Submitted');
       })
-  }
-
-  getRecipes() {
-    $.ajax({
-      url: '/recipes',
-      type: 'GET',
-      success: (recipes) => this.setState({recipes}),
-      error: (e) => console.log(e)
-    });
   }
 
   changeView(option) {
@@ -76,7 +76,7 @@ class App extends React.Component {
       />;
 
     } else {
-      return <Recipe
+      return <Post
         recipes={this.state.recipes}
         recipe={this.state.recipe}
       />;

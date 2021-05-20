@@ -6,6 +6,8 @@ class Create extends React.Component {
     this.state = {
       recipe: '',
       imageURL: '',
+      user: '',
+      userURL: '',
       ingredients: '',
       description: '',
       fileArr: [],

@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
+app.get('/recipes', Recipes.getAll);
+
 app.post('/recipes', (req, res) => {
   // console.log(req.body);
   const input = req.body;

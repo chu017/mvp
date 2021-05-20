@@ -1,6 +1,17 @@
 const Foodys = require('../models/recipes.js');
 
-const createRecipe = (input, callback) => {
+exports.getAll = (req, res) => {
+  // your code here
+  Foodys.find( {}, function(err, arr) {
+    if (err) {
+      res.status(400).send(err);
+    } else if (arr) {
+      res.status(200).send(arr);
+    }
+  })
+};
+
+exports.createRecipe = (input, callback) => {
   const { name, imageURL, description } = input;
   var newInput = {
     name: name,
@@ -22,5 +33,3 @@ const createRecipe = (input, callback) => {
     }
   })
 };
-
-module.exports = createRecipe;
