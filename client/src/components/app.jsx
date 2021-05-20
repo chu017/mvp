@@ -14,13 +14,15 @@ class App extends React.Component {
       recipes: [],
       recipe:[]
     };
+    this.postRecipe = this.postRecipe.bind(this);
+    this.getRecipes = this.getRecipes.bind(this);
   }
 
   componentDidMount() {
 
   }
 
-  getAll() {
+  getRecipes() {
     $.ajax({
       url: 'http://localhost:3000/api/recipes',
       type: 'GET',
@@ -29,13 +31,17 @@ class App extends React.Component {
     });
   }
 
-  post(recipe) {
+  postRecipe(recipe) {
     $.ajax({
-      url: 'http://localhost:3000/api/recipes',
+      url: '/recipes',
       type: 'POST',
+      data: recipe,
       success: (e) => console.log(e),
       error: (e) => console.log(e)
-    });
+    })
+      .done(function() {
+        console.log('Submitted');
+      })
   }
 
   changeView(option) {
@@ -66,6 +72,7 @@ class App extends React.Component {
 
       return <Create recipes={this.state.recipes}
       recipe={this.recipe}
+      postRecipe={this.postRecipe}
       />;
 
     } else {

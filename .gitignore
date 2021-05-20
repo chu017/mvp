@@ -34,6 +34,7 @@ bower_components/
 .floo
 .flooignore
 
+.env
 .DS_Store
 client/.DS_Store
 package-lock.json

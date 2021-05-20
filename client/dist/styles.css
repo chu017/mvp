@@ -165,10 +165,10 @@ body {
 
 .post {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "main main . sidebar"
+    "main main main sidebar sidebar"
 }
 
 .post-one {

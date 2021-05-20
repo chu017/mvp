@@ -11,6 +11,9 @@ const Account = (props) => {
            <h3>Jack Ross</h3>
            <div>Milan - Italy</div>
            <p>I love making Italian food.</p>
+           <p>Posts: 6</p>
+           <p>Followers: 99</p>
+           <p>Following: 99</p>
         </div>
       </div>
       <br></br>

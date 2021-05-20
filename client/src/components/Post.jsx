@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import Review from './Review.jsx';
-
+import UploadFile from './UploadFile.jsx';
+// import UploadImage from './UploadImage.jsx';
 
 class Post extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Post extends React.Component {
     };
 
   }
+  // <img src="https://loremflickr.com/320/240" />
 
   render() {
     return (
@@ -17,23 +19,15 @@ class Post extends React.Component {
 
         <div className="post-one">
           <img src="https://realfood.tesco.com/media/images/Souffle-omelette-b7cf7c9a-8ac1-4b94-a2bc-e7b3436f323c-0-636x418.jpg"/>
-          <h4><b>Soufflé Omelette</b></h4>
+          <h2><b>Soufflé Omelette</b></h2>
+          <p>Likes: 99</p>
           <br></br>
           <div className="card-profile">
           <img src="https://www.the-happy-chef.com/assets/img/team/team-3.jpg" className="profile-card"/>
           <p>Jack Ross</p>
           </div>
           <br></br>
-          <h4><b>Ingredients</b></h4>
-          <p>1 small cauliflower (about 500g), cut into florets, outer leaves discarded</p>
-          <p>3 thyme sprigs, leaves picked</p>
-          <p>120g 50% less fat crème fraîche</p>
-          <p>1 tsp Dijon mustard</p>
-          <p>4 large eggs</p>
-          <p>50g Gruyère or Emmental, grated</p>
-          <p>5g unsalted butter</p>
-          <p>5g fresh parsley leaves, finely chopped pinch of cayenne or chilli powder</p>
-          <br></br>
+          <h3><b>Method</b></h3>
           <h4><b>Step 1: Roast it right</b></h4>
           <img src="https://realfood.tesco.com/media/images/Step-1-979670e4-cf2e-4d28-adaf-64605c5dcccc-0-636x418.jpg"/>
           <p>Preheat the oven to gas 6, 200°C, fan 180°C. Toss the cauliflower florets and smaller leaves with the oil and spread over a large baking tray. Scatter with half the thyme and roast for 20-25 mins until tender and lightly charred.</p>
@@ -64,7 +58,20 @@ class Post extends React.Component {
         </div>
 
         <div className="post-two">
+          <br></br>
+           <h3><b>Ingredients</b></h3>
+            <p>1 small cauliflower (about 500g), cut into florets, outer leaves discarded</p>
+            <p>3 thyme sprigs, leaves picked</p>
+            <p>120g 50% less fat crème fraîche</p>
+            <p>1 tsp Dijon mustard</p>
+            <p>4 large eggs</p>
+            <p>50g Gruyère or Emmental, grated</p>
+            <p>5g unsalted butter</p>
+            <p>5g fresh parsley leaves, finely chopped pinch of cayenne or chilli powder</p>
+          <br></br>
           <Review />
+          <UploadFile />
+          {/* <UploadImage /> */}
         </div>
 
       </div>
