@@ -96,7 +96,9 @@ class App extends React.Component {
           </span>
 
           <div className="search">
-           <Search />
+           <Search
+           recipes={this.state.recipes}
+           />
           </div>
 
           <span className={this.state.view === 'gallery'
