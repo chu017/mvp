@@ -1,6 +1,7 @@
 body {
   font-family: helvetica;
   background: #f1f1f1;
+  font-family: Helvetica;
   height: 100%;
   margin: 0;
 }
@@ -30,6 +31,7 @@ body {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  font-family: Helvetica;
   transition: 0.3s;
   border-radius: 5%;
 }

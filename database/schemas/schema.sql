@@ -4,22 +4,27 @@ CREATE DATABASE foodys_db;
 
 USE foodys_db;
 
-
 DROP TABLE IF EXISTS recipes;
 
 CREATE TABLE recipes (
   id INT NOT NULL AUTO_INCREMENT,
-  product_id INT,
-  rating INT,
+  userID INT,
+  imageURL TEXT,
   date DATETIME,
-  summary TEXT,
-  body TEXT,
-  recommend BOOLEAN,
-  reported BOOLEAN,
-  reviewer_name VARCHAR(50),
-  reviewer_email VARCHAR(50),
-  response VARCHAR(250),
-  helpfulness INT,
+  MainIngredient TEXT,
+  IngredientID INT,
+  like INT,
+  reviewID INT,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE IF EXISTS ingredients;
+
+CREATE TABLE ingredients (
+  id INT,
+  recipeID INT,
+  name VARCHAR(20),
+  description TEXT,
   PRIMARY KEY (ID)
 );
 
@@ -27,8 +32,9 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id INT,
-  product_id INT,
+  recipeID INT,
   name VARCHAR(20),
+  summary TEXT,
   PRIMARY KEY (ID)
 );
 
@@ -36,17 +42,11 @@ DROP TABLE IF EXISTS reviews;
 
 CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT,
-  product_id INT,
+  recipe_id INT,
   rating INT,
   date DATETIME,
-  summary TEXT,
   body TEXT,
   recommend BOOLEAN,
-  reported BOOLEAN,
-  reviewer_name VARCHAR(50),
-  reviewer_email VARCHAR(50),
-  response VARCHAR(250),
-  helpfulness INT,
   PRIMARY KEY (ID)
 );
 
